@@ -12,7 +12,7 @@ jobs:
       - name: build docker
         run: mvn clean install
       - name: DOcker login
-      - run: docker login -u ${{secrets.DOCKER_USRNAME}} -p ${{secrets.docker_PASSWORD}}
+        run: docker login -u ${{secrets.DOCKER_USRNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build docker image
         run: docker build -t vijainirmal1/springboot-docker-helloworld .
       - name: publish docker hub
