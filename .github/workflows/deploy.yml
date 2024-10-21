@@ -6,10 +6,12 @@ on:
 jobs:
   build:
     runs-on: [ubuntu-latest]
+    defaults:
+      run:
+        working-directory: springboot-hello-world
     steps:
       - name: 'Checkout GitHub repository'
         uses: actions/checkout@v2
-        working-directory: springboot-hello-world
       - name: build docker
         run: mvn clean install
       - name: DOcker login
