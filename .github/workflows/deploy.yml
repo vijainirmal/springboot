@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: 'Checkout GitHub repository'
         uses: actions/checkout@v2
+        working-directory: springboot-hello-world
       - name: build docker
         run: mvn clean install
       - name: DOcker login
