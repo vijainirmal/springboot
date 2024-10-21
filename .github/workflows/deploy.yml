@@ -1,0 +1,19 @@
+name: springboot deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: 'Checkout GitHub repository'
+        uses: actions/checkout@v2
+      - name: build docker
+        run: mvn clean install
+      - name: DOcker login
+      - run: docker login -u ${{secrets.DOCKER_USRNAME}} -p ${{secrets.docker_PASSWORD}}
+      - name: Build docker image
+        run: docker build -t vijainirmal1/springboot-docker-helloworld .
+      - name: publish docker hub
+        run: docker push vijainirmal1/springboot-docker-helloworld:latest
